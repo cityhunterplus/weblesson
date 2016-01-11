@@ -12,4 +12,8 @@ class Host extends Model
 		'domain_name',
 		'ip_address'
 	];
+
+	public function hardwareinventory() {
+		return $this->hasOne('App\Hardwareinventory');
+	}
 }

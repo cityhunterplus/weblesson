@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use Faker\Factory as Faker;
 use App\Hardwareinventory;
+use App\Host;
 
 class HardwareinventoriesTableSeeder extends Seeder
 {
@@ -12,26 +15,25 @@ class HardwareinventoriesTableSeeder extends Seeder
      */
     public function run()
     {
-		DB::table('deals')->delete();
+		DB::table('hardwareinventories')->delete();
 
 		$cpu_gender = ['Core i5 4690K 3.50GHz TDP 88W', 'Core i3 4360 3.70GHz TDP 54W', 'AMD FX-8320 3.50GHz TDP 125W'];
 		$memory_gender = [4, 8];
 		$vendor_gender = ['DELL', 'HP', 'NEC'];
 
 		$faker = Faker::create('ja_JP');
-		for ($i = 0; $i < 3000; $i++) {
-			$menu = App\Menu::orderByRaw("RAND()")->get()->first();
-			$customer = Customer::orderByRaw("RAND()")->get()->first();
-			$user = User::orderByRaw("RAND()")->get()->first();
-			$deal = new Deal([
+
+		$hosts = Host::all();
+
+		foreach ($hosts as $host) {
+		//for ($i = 0; $i < 3000; $i++) {
+			$inv = new Hardwareinventory([
 				'computer_name' => $faker->userName,
-				'CPU' => $faker->randomElement($cpu_gender),
+				'cpu' => $faker->randomElement($cpu_gender),
 				'memory' => $faker->randomElement($memory_gender),
 				'vendor_name' => $faker->randomElement($vendor_gender),
 			]);
-			$customer->deals()->save($deal);
-			$menu->deals()->save($deal);
-			$user->deals()->save($deal);
+			$host->hardwareinventory()->save($inv);
 		}
     }
 }

@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Host;
-use App\Hardeareinventory;
-use App\Hardwareinventory;
 
-class HostsController extends Controller
+class HardwareinventoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +16,7 @@ class HostsController extends Controller
      */
     public function index()
     {
-        $hosts = Host::paginate(20);
-        return view('hosts.index', compact('hosts'));
+        //
     }
 
     /**
@@ -52,8 +48,7 @@ class HostsController extends Controller
      */
     public function show($id)
     {
-        $host = Host::find($id);
-        return view('hosts.show', compact('host'));
+        //
     }
 
     /**
@@ -64,8 +59,7 @@ class HostsController extends Controller
      */
     public function edit($id)
     {
-        $host = Host::find($id);
-        return view('hosts.edit', compact('host'));
+        //
     }
 
     /**
@@ -77,9 +71,7 @@ class HostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-		$host = Host::find($id);
-		$host->fill($request->all())->save();
-		return redirect('hosts')->with('success_message', 'ホストを更新しました。');
+        //
     }
 
     /**
@@ -90,11 +82,6 @@ class HostsController extends Controller
      */
     public function destroy($id)
     {
-		$hard = Hardwareinventory::where('host_id', $id)->get()->first();
-		if ($hard != null) {
-			Hardwareinventory::destroy($hard->id);
-		}
-		$host = Host::destroy($id);
-		return redirect('hosts')->with('success_message', 'ホストを削除しました。');
+        //
     }
 }

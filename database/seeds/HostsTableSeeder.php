@@ -14,13 +14,14 @@ class HostsTableSeeder extends Seeder
      */
     public function run()
     {
-		DB::table('contacts')->delete();
+		DB::table('hosts')->delete();
 		$faker = Faker::create('ja_JP');
 		for ($i = 0; $i < 500; $i++) {
-			Contact::create([
+			Host::create([
 				'host_name' => $faker->userName,
 				'domain_name' => $faker->domainName,
 				'ip_address' => $faker->ipv4,
 			]);
+		}
     }
 }

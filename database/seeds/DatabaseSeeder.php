@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+		DB::table('hardwareinventories')->delete();
+
+		$this->call(HostsTableSeeder::class);
+		$this->call(HardwareinventoriesTableSeeder::class);
 
         Model::reguard();
     }

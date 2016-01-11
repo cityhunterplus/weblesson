@@ -18,7 +18,7 @@ class CreateHardwareinventoriesTable extends Migration
 			$table->foreign('host_id')
 				->references('id')->on('hosts');
 			$table->string('computer_name', 255);
-			$table->string('CPU', 50);
+			$table->string('cpu', 50);
 			$table->integer('memory');
 			$table->string('vendor_name', 50);
 			$table->timestamps();

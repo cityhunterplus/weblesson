@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hosts', 'HostsController@index');
+Route::get('hosts/index', 'HostsController@index');
+Route::get('hosts/show/{id}', 'HostsController@show');
+Route::get('hosts/edit/{id}', 'HostsController@edit');
+Route::post('hosts/update/{id}', 'HostsController@update');
+Route::delete('hosts/destroy/{id}', 'HostsController@destroy');
+
+Route::get('hardwareinventories/show/{id}', 'HardwareinventoriesController@show');
