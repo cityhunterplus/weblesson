@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+/**
+ * ‚±‚ÌƒNƒ‰ƒX‚ğ‰ü•Ï‚µ‚Ä‚ËI
+ */
 class HardwareinventoriesController extends Controller
 {
     /**
